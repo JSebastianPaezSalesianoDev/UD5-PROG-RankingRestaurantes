@@ -3,7 +3,6 @@ package net.ripadbaisor.gestion;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 import javax.swing.JOptionPane;
 
 import net.ripadbaisor.restaurante.Restaurante;
@@ -89,13 +88,12 @@ public class Gestor {
 
     public void eliminarRestaurante() {
         String opcionEliminar = JOptionPane.showInputDialog("Ingrese el nombre del restaurante a eliminar");
-    
+
         for (int i = restaurantes.size() - 1; i >= 0; i--) {
             if (restaurantes.get(i).getNombre().equals(opcionEliminar)) {
                 restaurantes.remove(i);
             }
         }
     }
-    
 
 }
