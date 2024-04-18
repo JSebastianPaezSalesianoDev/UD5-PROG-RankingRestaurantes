@@ -48,8 +48,8 @@ public class Restaurante {
 
     @Override
     public String toString() {
-        return "Restaurante " + nombre + "\nlocalizacion: " + localizacion + "\nhorario=" + horario
-                + "\npuntuacion=" + puntuacion;
+        return "Restaurante " + nombre + "\nlocalizacion: " + localizacion + "\nhorario:" + horario
+                + "\npuntuacion:" + puntuacion;
     }
 
     
