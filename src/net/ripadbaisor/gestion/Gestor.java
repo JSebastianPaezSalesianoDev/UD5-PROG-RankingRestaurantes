@@ -35,4 +35,53 @@ public class Gestor {
         }
     }
 
+    public void editarRestaurante() {
+
+        String restauranteEditar = JOptionPane.showInputDialog("Introduce el nombre del restaurante que quiera editar");
+
+        for (Restaurante restaurante : restaurantes) {
+            
+            if (restauranteEditar != null && restauranteEditar.equalsIgnoreCase(restaurante.getNombre())) {
+            
+                int opcionUsuario = Integer.parseInt(JOptionPane.showInputDialog("Que apartado desea modificar, ingrese el numero\n1.nombre\n2.localizacion\n3.horario\n4.puntuacion"));
+                
+                switch (opcionUsuario) {
+
+                    case 1:
+                        String nuevoNombre = JOptionPane.showInputDialog("ingrese el nuevo nombre para el restaurante" + restauranteEditar);
+
+                        restaurante.setNombre(nuevoNombre);
+                        break;
+                    case 2:
+                        String nuevaLocalizacion = JOptionPane.showInputDialog("Ingrese la nueva localizacion");
+
+                        restaurante.setLocalizacion(nuevaLocalizacion);
+                        break;
+                    case 3:
+                        String nuevoHorario = JOptionPane.showInputDialog("Ingrese el nuevo horario");
+
+                        restaurante.setHorario(nuevoHorario);
+                        break;
+                    case 4:
+                        double nuevaPuntuacion = Double.parseDouble(JOptionPane.showInputDialog("Introduce la nueva puntuacion"));
+
+                        restaurante.setPuntuacion(nuevaPuntuacion);
+                        break;
+                    default:
+                        System.out.println("Ingrese un valor numerico valido");
+                        break;
+                }
+            }
+        }
+
+    }
+
+    public void mostrarRestaurantes(){
+
+        for (Restaurante restaurante : restaurantes) {
+            
+            restaurante.toString();
+        }
+    }
+
 }
