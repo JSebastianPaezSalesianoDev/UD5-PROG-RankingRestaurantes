@@ -80,8 +80,9 @@ public class Gestor {
 
         for (Restaurante restaurante : restaurantes) {
             
-            restaurante.toString();
+            JOptionPane.showMessageDialog(null, restaurante.toString());
         }
     }
+   
 
 }
