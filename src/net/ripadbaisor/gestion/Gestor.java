@@ -1,6 +1,8 @@
 package net.ripadbaisor.gestion;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.JOptionPane;
 
@@ -78,10 +80,8 @@ public class Gestor {
 
     public void mostrarRestaurantes(){
 
-        for (Restaurante restaurante : restaurantes) {
-            
-            JOptionPane.showMessageDialog(null, restaurante.toString());
-        }
+        Collections.sort(restaurantes, (r1, r2) -> Double.compare(r2.getPuntuacion(), r1.getPuntuacion()));
+        JOptionPane.showMessageDialog(null, restaurantes.toString());
     }
    
 
