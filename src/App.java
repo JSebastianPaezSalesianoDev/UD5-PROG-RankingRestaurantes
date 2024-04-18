@@ -7,5 +7,7 @@ public class App {
         Gestor gestor = new Gestor();
 
         gestor.añadiRestaurante();
+
+        gestor.mostrarRestaurantes();
     }
 }

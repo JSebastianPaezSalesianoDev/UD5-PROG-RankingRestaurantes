@@ -2,7 +2,7 @@ package net.ripadbaisor.gestion;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+
 
 import javax.swing.JOptionPane;
 
@@ -42,15 +42,17 @@ public class Gestor {
         String restauranteEditar = JOptionPane.showInputDialog("Introduce el nombre del restaurante que quiera editar");
 
         for (Restaurante restaurante : restaurantes) {
-            
+
             if (restauranteEditar != null && restauranteEditar.equalsIgnoreCase(restaurante.getNombre())) {
-            
-                int opcionUsuario = Integer.parseInt(JOptionPane.showInputDialog("Que apartado desea modificar, ingrese el numero\n1.nombre\n2.localizacion\n3.horario\n4.puntuacion"));
-                
+
+                int opcionUsuario = Integer.parseInt(JOptionPane.showInputDialog(
+                        "Que apartado desea modificar, ingrese el numero\n1.nombre\n2.localizacion\n3.horario\n4.puntuacion"));
+
                 switch (opcionUsuario) {
 
                     case 1:
-                        String nuevoNombre = JOptionPane.showInputDialog("ingrese el nuevo nombre para el restaurante" + restauranteEditar);
+                        String nuevoNombre = JOptionPane
+                                .showInputDialog("ingrese el nuevo nombre para el restaurante" + restauranteEditar);
 
                         restaurante.setNombre(nuevoNombre);
                         break;
@@ -65,7 +67,8 @@ public class Gestor {
                         restaurante.setHorario(nuevoHorario);
                         break;
                     case 4:
-                        double nuevaPuntuacion = Double.parseDouble(JOptionPane.showInputDialog("Introduce la nueva puntuacion"));
+                        double nuevaPuntuacion = Double
+                                .parseDouble(JOptionPane.showInputDialog("Introduce la nueva puntuacion"));
 
                         restaurante.setPuntuacion(nuevaPuntuacion);
                         break;
@@ -78,11 +81,21 @@ public class Gestor {
 
     }
 
-    public void mostrarRestaurantes(){
+    public void mostrarRestaurantes() {
 
         Collections.sort(restaurantes, (r1, r2) -> Double.compare(r2.getPuntuacion(), r1.getPuntuacion()));
         JOptionPane.showMessageDialog(null, restaurantes.toString());
     }
-   
+
+    public void eliminarRestaurante() {
+        String opcionEliminar = JOptionPane.showInputDialog("Ingrese el nombre del restaurante a eliminar");
+    
+        for (int i = restaurantes.size() - 1; i >= 0; i--) {
+            if (restaurantes.get(i).getNombre().equals(opcionEliminar)) {
+                restaurantes.remove(i);
+            }
+        }
+    }
+    
 
 }
