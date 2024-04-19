@@ -13,28 +13,26 @@ import net.ripadbaisor.restaurante.Restaurante;
 public class Gestor {
 
     private ArrayList<Restaurante> restaurantes = new ArrayList<>();
-    private ValidadorString validadorString = new ValidadorString();
-    private ValidarDouble validarDouble = new ValidarDouble();
 
     public Restaurante añadiRestaurante() throws InputInvalidoException {
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
-        validadorString.validarString(nombre);
+        ValidadorString.validarString(nombre);
 
         String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
-        validadorString.validarString(localizacion);
+        ValidadorString.validarString(localizacion);
 
         String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
-        validadorString.validarString(horario);
+        ValidadorString.validarString(horario);
 
         String puntuacion = JOptionPane.showInputDialog("Introduce la puntuación del restaurante");
-        validadorString.validarString(puntuacion);
+        ValidadorString.validarString(puntuacion);
 
         if (puntuacion == null || puntuacion.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar una puntuación");
-            return añadiRestaurante(); 
+            return añadiRestaurante();
         }
         double puntuacionDouble = Double.parseDouble(puntuacion);
-        validarDouble.validarDouble(puntuacion);
+        ValidarDouble.validarDouble(puntuacion);
 
         Restaurante restaurante = new Restaurante(nombre, localizacion, horario, puntuacionDouble);
         restaurantes.add(restaurante);

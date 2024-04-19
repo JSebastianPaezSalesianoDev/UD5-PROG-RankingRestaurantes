@@ -6,7 +6,7 @@ public class ValidarDouble {
 
     public ValidarDouble(){}
 
-    public void validarDouble(String valor) {
+    public static void validarDouble(String valor) {
         try {
         
             double validado = Double.parseDouble(valor);
