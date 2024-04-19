@@ -3,7 +3,6 @@ package net.ripadbaisor.gestion;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 import javax.swing.JOptionPane;
 
 import net.ripadbaisor.restaurante.Restaurante;
@@ -16,7 +15,18 @@ public class Gestor {
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
         String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
         String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
-        double puntuacion = Double.parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
+        double puntuacion = 0.0d;
+
+        try {
+
+            puntuacion = Double
+                    .parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Ingrese un valor numerico");
+        }
+
         return new Restaurante(nombre, localizacion, horario, puntuacion);
     }
 
@@ -89,13 +99,12 @@ public class Gestor {
 
     public void eliminarRestaurante() {
         String opcionEliminar = JOptionPane.showInputDialog("Ingrese el nombre del restaurante a eliminar");
-    
+
         for (int i = restaurantes.size() - 1; i >= 0; i--) {
             if (restaurantes.get(i).getNombre().equals(opcionEliminar)) {
                 restaurantes.remove(i);
             }
         }
     }
-    
 
 }
