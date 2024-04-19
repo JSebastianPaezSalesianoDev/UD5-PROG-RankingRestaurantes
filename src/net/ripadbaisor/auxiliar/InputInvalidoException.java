@@ -10,7 +10,7 @@ public class InputInvalidoException extends Exception{
 
         if (mensaje == null || mensaje == "") {
 
-            throw new InputInvalidoException("Debe ingresar un valor que sea diferente de nada y null");
+            throw new InputInvalidoException("");
         }
         
     }

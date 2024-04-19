@@ -15,13 +15,13 @@ public class ValidadorString {
         try {
             
             if (validado == null || validado.isEmpty()) {
-                throw new InputInvalidoException("El campo"+ validado + " no puede estar vacío");
-
+                throw new InputInvalidoException("El campo "+ validado + " no puede estar vacío");
+                
             }
 
         } catch (InputInvalidoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, 0);
-            return;
+            
 
         }
 

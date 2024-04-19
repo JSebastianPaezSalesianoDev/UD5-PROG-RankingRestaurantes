@@ -6,6 +6,7 @@ import java.util.Collections;
 import javax.swing.JOptionPane;
 
 import net.ripadbaisor.auxiliar.ValidadorString;
+import net.ripadbaisor.auxiliar.ValidarDouble;
 import net.ripadbaisor.excepciones.InputInvalidoException;
 import net.ripadbaisor.restaurante.Restaurante;
 
@@ -13,40 +14,33 @@ public class Gestor {
 
     private ArrayList<Restaurante> restaurantes = new ArrayList<>();
     private ValidadorString validadorString = new ValidadorString();
+    private ValidarDouble validarDouble = new ValidarDouble();
 
-    public Restaurante añadiRestaurante() throws InputInvalidoException {
-        String nombre = null;
-        try {
-            nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
-            if (nombre == null || nombre.isEmpty()) {
-                throw new InputInvalidoException("El campo no puede estar vacío");
-                
-            }
-            
-        } catch (InputInvalidoException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), nombre, 0);
-            
-        }
+    public  Restaurante añadiRestaurante()
+            throws InputInvalidoException, net.ripadbaisor.auxiliar.InputInvalidoException {
+        String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
+        validadorString.validarString(nombre);
 
         String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
         validadorString.validarString(localizacion);
-        
+
         String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
         validadorString.validarString(horario);
 
-        double puntuacion = 0.0d;
-        
-        try {
-            puntuacion = Double.parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
-        } catch (NumberFormatException e) {
-            System.out.println("Ingrese un valor numerico");
+        String puntuacion = JOptionPane.showInputDialog("Introduce la puntuación del restaurante");
+        validadorString.validarString(puntuacion);
+
+        if (puntuacion == null || puntuacion.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una puntuación");
+            return añadiRestaurante(); 
         }
-        
-        Restaurante restaurante = new Restaurante(nombre, localizacion, horario, puntuacion);
+        double puntuacionDouble = Double.parseDouble(puntuacion);
+        validarDouble.validarDouble(puntuacion);
+
+        Restaurante restaurante = new Restaurante(nombre, localizacion, horario, puntuacionDouble);
         restaurantes.add(restaurante);
-        return restaurante; 
+        return restaurante;
     }
-    
 
     public void editarRestaurante() {
 
