@@ -1,6 +1,7 @@
 import javax.swing.JOptionPane;
 
 import net.ripadbaisor.auxiliar.Menu;
+import net.ripadbaisor.excepciones.InputInvalidoException;
 import net.ripadbaisor.gestion.Gestor;
 
 public class App {
@@ -16,9 +17,16 @@ public class App {
 
         switch (opcionMenu) {
             case "1":
-                gestor.añadiRestaurante();
+                try {
+                    gestor.añadiRestaurante();
+                } catch (InputInvalidoException e) {
+                    String alerta ="";
+                    JOptionPane.showMessageDialog(null, e.getMessage(), alerta, 0);
+                }
                 break;
+                
             case "2":
+            
                 gestor.editarRestaurante();
                 break;
             case "3": 

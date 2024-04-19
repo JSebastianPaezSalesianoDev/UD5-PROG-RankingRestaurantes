@@ -5,47 +5,48 @@ import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
+import net.ripadbaisor.auxiliar.ValidadorString;
+import net.ripadbaisor.excepciones.InputInvalidoException;
 import net.ripadbaisor.restaurante.Restaurante;
 
 public class Gestor {
 
-    ArrayList<Restaurante> restaurantes = new ArrayList<>();
+    private ArrayList<Restaurante> restaurantes = new ArrayList<>();
+    private ValidadorString validadorString = new ValidadorString();
 
-    private Restaurante crearNuevoRestaurante() {
-        String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
-        String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
-        String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
-        double puntuacion = 0.0d;
-
+    public Restaurante añadiRestaurante() throws InputInvalidoException {
+        String nombre = null;
         try {
+            nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
+            if (nombre == null || nombre.isEmpty()) {
+                throw new InputInvalidoException("El campo no puede estar vacío");
+                
+            }
+            
+        } catch (InputInvalidoException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), nombre, 0);
+            
+        }
 
-            puntuacion = Double
-                    .parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
+        String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
+        validadorString.validarString(localizacion);
+        
+        String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
+        validadorString.validarString(horario);
 
+        double puntuacion = 0.0d;
+        
+        try {
+            puntuacion = Double.parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
         } catch (NumberFormatException e) {
-
             System.out.println("Ingrese un valor numerico");
         }
-
-        return new Restaurante(nombre, localizacion, horario, puntuacion);
+        
+        Restaurante restaurante = new Restaurante(nombre, localizacion, horario, puntuacion);
+        restaurantes.add(restaurante);
+        return restaurante; 
     }
-
-    public void añadiRestaurante() {
-
-        boolean hayEspacio = false;
-        for (int i = 0; i < restaurantes.size(); i++) {
-            if (restaurantes.get(i) == null) {
-                hayEspacio = true;
-
-                restaurantes.set(i, crearNuevoRestaurante());
-                break;
-            }
-        }
-
-        if (!hayEspacio) {
-            restaurantes.add(crearNuevoRestaurante());
-        }
-    }
+    
 
     public void editarRestaurante() {
 
