@@ -12,19 +12,34 @@ public class Gestor {
     ArrayList<Restaurante> restaurantes = new ArrayList<>();
 
     private Restaurante crearNuevoRestaurante() {
-        String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
-        String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
-        String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
-        double puntuacion = 0.0d;
+
+        String nombre = "";
+        String localizacion = "";
+        String horario = "";
+        double puntuacion = 0.0;
 
         try {
+            nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
+        } catch (NullPointerException e) {
+            System.out.println("\n\n\t\t ingresar algun valor valido para el nombre del restaurante\n\n\t\t");
+        }
 
+        try {
+            localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
+        } catch (Exception e2) {
+            System.out.println("\n\n\t\tDebe ingresar una opcion valida para la localizacion\n\n\t\t");
+        }
+
+        try {
+            horario = JOptionPane.showInputDialog("Introduce un horario para el restaurante");
+        } catch (Exception e3) {
+           System.out.println("\n\n\t\tDebe ingresar un horario\n\n\t\t");
+        }
+        try {
             puntuacion = Double
                     .parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
-
-        } catch (NumberFormatException e) {
-
-            System.out.println("Ingrese un valor numerico");
+        } catch (NumberFormatException e4) {
+            System.out.println("\n\n\t\tIngrese un valor numerico\n\n\t\t");
         }
 
         return new Restaurante(nombre, localizacion, horario, puntuacion);
