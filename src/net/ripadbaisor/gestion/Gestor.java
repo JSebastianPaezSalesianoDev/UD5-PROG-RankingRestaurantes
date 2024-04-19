@@ -15,7 +15,18 @@ public class Gestor {
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
         String localizacion = JOptionPane.showInputDialog("Introduce la localizacion del restaurante");
         String horario = JOptionPane.showInputDialog("Introduce el horario del restaurante");
-        double puntuacion = Double.parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
+        double puntuacion = 0.0d;
+
+        try {
+
+            puntuacion = Double
+                    .parseDouble(JOptionPane.showInputDialog("Introduce la puntuación del restaurante"));
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Ingrese un valor numerico");
+        }
+
         return new Restaurante(nombre, localizacion, horario, puntuacion);
     }
 
