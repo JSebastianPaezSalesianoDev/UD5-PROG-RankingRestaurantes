@@ -12,21 +12,26 @@ public class App {
 
         while (seguir) {
             
-            int opcionMenu = Integer.parseInt(JOptionPane.showInputDialog(Menu.menu()));
+            String opcionMenu = JOptionPane.showInputDialog(Menu.menu());
 
         switch (opcionMenu) {
-            case 1:
+            case "1":
                 gestor.añadiRestaurante();
                 break;
-            case 2:
+            case "2":
                 gestor.editarRestaurante();
                 break;
-            case 3: 
+            case "3": 
                 gestor.mostrarRestaurantes();
                 break;
-            case 4:
+            case "4":
                 gestor.eliminarRestaurante();
                 break;
+            case "Q":
+                seguir = false;
+                break;
+            case "q":
+                seguir = false;
             default:
                 break;
         }
