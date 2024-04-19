@@ -55,24 +55,31 @@ public class Gestor {
                     case 1:
                         String nuevoNombre = JOptionPane
                                 .showInputDialog("ingrese el nuevo nombre para el restaurante" + restauranteEditar);
+                        ValidadorString.validarString(nuevoNombre);
 
                         restaurante.setNombre(nuevoNombre);
                         break;
                     case 2:
                         String nuevaLocalizacion = JOptionPane.showInputDialog("Ingrese la nueva localizacion");
-
+                        ValidadorString.validarString(nuevaLocalizacion);
                         restaurante.setLocalizacion(nuevaLocalizacion);
                         break;
                     case 3:
                         String nuevoHorario = JOptionPane.showInputDialog("Ingrese el nuevo horario");
-
+                        ValidadorString.validarString(nuevoHorario);
                         restaurante.setHorario(nuevoHorario);
                         break;
                     case 4:
-                        double nuevaPuntuacion = Double
-                                .parseDouble(JOptionPane.showInputDialog("Introduce la nueva puntuacion"));
+                        String nuevaPuntuacion = JOptionPane.showInputDialog("Introduce la nueva puntuacion");
+                        ValidadorString.validarString(nuevaPuntuacion);
 
-                        restaurante.setPuntuacion(nuevaPuntuacion);
+                        if (nuevaPuntuacion == null || nuevaPuntuacion.trim().isEmpty()) {
+                            JOptionPane.showMessageDialog(null, "Debe ingresar una puntuación");
+                            return;
+                        }
+                        double puntuacionDouble = Double.parseDouble(nuevaPuntuacion);
+                        ValidarDouble.validarDouble(nuevaPuntuacion);
+                        restaurante.setPuntuacion(puntuacionDouble);
                         break;
                     default:
                         System.out.println("Ingrese un valor numerico valido");

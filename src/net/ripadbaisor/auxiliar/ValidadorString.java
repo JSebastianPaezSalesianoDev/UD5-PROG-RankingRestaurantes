@@ -8,9 +8,9 @@ public class ValidadorString {
 
     }
 
-    public  static void validarString(String validado) throws InputInvalidoException {
+    public static void validarString(String validado) throws InputInvalidoException {
         if (validado == null || validado.isEmpty()) {
-            throw new InputInvalidoException("El campo "+ validado + " no puede estar vacío");
+            throw new InputInvalidoException("El campo " + validado + " no puede estar vacío");
         }
     }
 }
