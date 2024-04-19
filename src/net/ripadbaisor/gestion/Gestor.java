@@ -16,8 +16,7 @@ public class Gestor {
     private ValidadorString validadorString = new ValidadorString();
     private ValidarDouble validarDouble = new ValidarDouble();
 
-    public  Restaurante añadiRestaurante()
-            throws InputInvalidoException, net.ripadbaisor.auxiliar.InputInvalidoException {
+    public Restaurante añadiRestaurante() throws InputInvalidoException {
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante");
         validadorString.validarString(nombre);
 
