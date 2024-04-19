@@ -1,7 +1,5 @@
 package net.ripadbaisor.auxiliar;
 
-import javax.swing.JOptionPane;
-
 import net.ripadbaisor.excepciones.InputInvalidoException;
 
 public class ValidadorString {
