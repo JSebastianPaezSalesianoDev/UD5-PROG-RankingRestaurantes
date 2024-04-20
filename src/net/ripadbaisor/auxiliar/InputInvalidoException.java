@@ -8,7 +8,7 @@ public class InputInvalidoException extends Exception{
     
     public static void InputInvalidoException( String mensaje) throws InputInvalidoException{
 
-        if (mensaje == null || mensaje == "") {
+        if (mensaje == null || mensaje.isEmpty()) {
 
             throw new InputInvalidoException("");
         }

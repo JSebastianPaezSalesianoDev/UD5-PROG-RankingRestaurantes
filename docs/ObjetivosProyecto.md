@@ -6,7 +6,7 @@ Mas informacion sobre la libreria [aqui](https://www.discoduroderoer.es/metodos-
 
 Gracias a nuestra libreria Swing podemos evitar la consola y pedir la informacion con **Una ventana emergente** Como la siguiente:
 
-![JOption](image.png)
+![JOption](/docs/img/image.png)
 
 Con la cual podremos recolectar la informacion, tal como añadir restaurantes con las caracteristicas necesarias, siendo estas 
 
